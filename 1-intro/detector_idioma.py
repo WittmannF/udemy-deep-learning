@@ -49,7 +49,7 @@ class Modelo:
             
         lr_tfidf = Pipeline([('vect', tfidf), 
                     ('clf', LogisticRegression(random_state=42, solver='liblinear'))])
-        gs_lr_tfidf = GridSearchCV(lr_tfidf, param_grid, scoring='accuracy', cv=5, verbose=0, n_jobs=-1, iid=False)
+        gs_lr_tfidf = GridSearchCV(lr_tfidf, param_grid, scoring='accuracy', cv=5, verbose=0, n_jobs=-1)
         gs_lr_tfidf.fit(X_train, y_train)
         self.clf = gs_lr_tfidf.best_estimator_
         print("Treinamento Concluído!")
